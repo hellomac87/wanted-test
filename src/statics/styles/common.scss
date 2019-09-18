@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, Helvetica, Arial, "hiragino kaku gothic pro",
+    meiryo, "Microsoft YaHei", "ms pgothic", "Apple SD Gothic Neo",
+    "Nanum Gothic", "Malgun Gothic", sans-serif;
+}
+
+image {
+  vertical-align: top;
+}
+a {
+  text-decoration: none;
+}
+/* input 기본 스타일 초기화 */
+input {
+  border: 0;
+  box-shadow: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+  &::-ms-clear {
+    display: none;
+  }
+
+  /* input type number 에서 화살표 제거 */
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Select box 스타일 초기화 */
+select {
+  border: 0;
+  box-shadow: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* IE 에서 Select box 화살표 제거 */
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+button {
+  background: 0;
+  border: 0;
+  border-radius: 0;
+}

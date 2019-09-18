@@ -1,0 +1,28 @@
+.basic {
+  border-radius: 2px;
+  border: 1px solid #e1e2e3;
+  background: #fff;
+  color: #333;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 9px 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+}
+
+.label {
+  margin-right: 5px;
+  color: #999;
+}
+
+.title {
+  color: #2886fa;
+  font-weight: 600;
+
+  &.default {
+    color: #333;
+  }
+}
