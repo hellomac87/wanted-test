@@ -1,15 +1,33 @@
-import React from "react";
-import Button from "./components/Button";
+import React, { useCallback, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { LOAD_JOBS_REQUEST } from "./reducers/jobs";
 
-function App() {
+import Button from "./components/Button";
+import Card from "./components/Card/Card";
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_JOBS_REQUEST
+    });
+  }, []);
+
   return (
     <div className="App">
-      <Button title={"최신순"} />
-      <Button isDefault={false} label={"국가"} title={"한국"} />
-      <Button isDefault={true} label={"지역"} title={"전국"} />
-      <Button isDefault={false} label={"경력"} title={"신입"} />
+      <div>
+        <Button title={"최신순"} />
+        <Button isDefault={false} label={"국가"} title={"한국"} />
+        <Button isDefault={true} label={"지역"} title={"전국"} />
+        <Button isDefault={false} label={"경력"} title={"신입"} />
+      </div>
+
+      <div>
+        <Card />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
