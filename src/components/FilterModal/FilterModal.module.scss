@@ -1,0 +1,117 @@
+.container {
+  position: relative;
+}
+
+.mask {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  width: 100%;
+  max-width: 500px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background-color: #fff;
+  max-height: calc(100vh - 150px);
+}
+
+.header {
+  height: 54px;
+  padding: 16px 20px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.init-btn {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 15px;
+  line-height: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #999;
+  text-align: left;
+}
+
+.close-btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 15px;
+  line-height: 0;
+  color: #bbb;
+  line-height: 1;
+  font-size: 15px;
+}
+
+.body {
+  max-height: calc(100vh - 295px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  label {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+    margin: 0 0 10px;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 9px 20px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #f8f8fa;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+  }
+}
+.inner {
+  padding: 20px;
+}
+
+.order-wrap,
+.year-wrap {
+  margin: 10px 0 30px;
+}
+
+.selector-wrap {
+  position: relative;
+  &:after {
+    content: "";
+    top: 50%;
+    right: 20px;
+    width: 0;
+    height: 0;
+    position: absolute;
+    z-index: 1002;
+    border-top: 6px solid #999;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
