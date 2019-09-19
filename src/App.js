@@ -1,14 +1,13 @@
-import React, { useCallback, useState, useEffect } from "react";
-
-import JobList from "./components/JobList";
-import FilterList from "./components/FilterList/FilterList";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Jobs from "./pages/Jobs";
 
 const App = () => {
   return (
     <div className="App">
-      <FilterList />
-
-      <JobList />
+      <Router>
+        <Route path="/" component={Jobs} />
+      </Router>
     </div>
   );
 };
