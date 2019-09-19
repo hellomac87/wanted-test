@@ -8,14 +8,14 @@ const cx = classNames.bind(styles);
 
 const FilterList = () => {
   return (
-    <div>
-      <div>
+    <div className={cx("container")}>
+      <div className={cx("left")}>
         <Button title={"최신순"} />
         <Button isDefault={false} label={"국가"} title={"한국"} />
         <Button isDefault={true} label={"지역"} title={"전국"} />
         <Button isDefault={false} label={"경력"} title={"신입"} />
       </div>
-      <div>
+      <div className={cx("right")}>
         <Button isDefault={false} title={"필터"} />
       </div>
     </div>
