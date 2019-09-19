@@ -46,7 +46,11 @@ const dummy = {
 const Card = ({ job }) => {
   return (
     <li className={cx("container")}>
-      <a href="/wd/27386?referer_id=459737" target="_self" className="">
+      <a
+        href={`https://www.wanted.co.kr/wd/${job.id}`}
+        target="_self"
+        className=""
+      >
         <header
           className={cx("header")}
           style={{ backgroundImage: `url(${job.title_img.thumb})` }}
