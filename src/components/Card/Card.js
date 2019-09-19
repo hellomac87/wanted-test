@@ -6,43 +6,6 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-const dummy = {
-  address: {
-    country: "Korea",
-    location: "Seoul"
-  },
-  company: {
-    id: 5290,
-    industry_name: "IT, Media",
-    name: "크라우드웍스"
-  },
-  compare_country: true,
-  due_time: null,
-  id: 27386,
-  is_bookmark: false,
-  is_like: false,
-  like_count: 2,
-  ogo_img: {
-    origin: "https://static.wanted.co.kr/images/wdes/0_4.ff99dbe1.jpg",
-    thumb: "https://static.wanted.co.kr/images/wdes/0_5.ff99dbe1.jpg"
-  },
-
-  position: "FE 개발자",
-  reward: {
-    formatted_recommendee: "US$100",
-    formatted_recommender: "US$100",
-    formatted_total: "US$200"
-  },
-
-  status: "active",
-  title_img: {
-    origin:
-      "https://static.wanted.co.kr/images/company/5290/nth3n9bjbosqbhse__1080_790.jpg",
-    thumb:
-      "https://static.wanted.co.kr/images/company/5290/nth3n9bjbosqbhse__400_400.jpg"
-  }
-};
-
 const Card = ({ job }) => {
   return (
     <li className={cx("container")}>

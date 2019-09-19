@@ -1,4 +1,4 @@
-import { all, delay, fork, put, takeLatest, call } from "redux-saga/effects";
+import { all, fork, put, takeLatest, call } from "redux-saga/effects";
 import {
   LOAD_JOBS_REQUEST,
   LOAD_JOBS_SUCCESS,
