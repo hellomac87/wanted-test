@@ -1,4 +1,7 @@
-const initialState = [];
+const initialState = {
+  jobsList: [],
+  jobsLinks: null
+};
 
 export const LOAD_JOBS_REQUEST = "LOAD_JOBS_REQUEST";
 export const LOAD_JOBS_SUCCESS = "LOAD_JOBS_SUCCESS";
@@ -14,7 +17,9 @@ const jobs = (state = initialState, action) => {
     case LOAD_JOBS_SUCCESS: {
       console.log(action.data);
       return {
-        ...state
+        ...state,
+        jobsList: action.data.data,
+        jobsLinks: action.data.links
       };
     }
     case LOAD_JOBS_FAILURE: {

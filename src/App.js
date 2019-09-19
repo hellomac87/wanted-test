@@ -3,17 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { LOAD_JOBS_REQUEST } from "./reducers/jobs";
 
 import Button from "./components/Button";
-import Card from "./components/Card/Card";
+import JobList from "./components/JobList/JobList";
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({
-      type: LOAD_JOBS_REQUEST
-    });
-  }, []);
-
   return (
     <div className="App">
       <div>
@@ -23,9 +15,7 @@ const App = () => {
         <Button isDefault={false} label={"경력"} title={"신입"} />
       </div>
 
-      <div>
-        <Card />
-      </div>
+      <JobList />
     </div>
   );
 };

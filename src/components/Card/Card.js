@@ -43,37 +43,37 @@ const dummy = {
   }
 };
 
-const Card = props => {
+const Card = ({ job }) => {
   return (
-    <div className={cx("container")}>
+    <li className={cx("container")}>
       <a href="/wd/27386?referer_id=459737" target="_self" className="">
         <header
           className={cx("header")}
-          style={{ backgroundImage: `url(${dummy.title_img.thumb})` }}
+          style={{ backgroundImage: `url(${job.title_img.thumb})` }}
         >
           <button type="button" className={cx("likeButton")}>
             {/* <i class="icon-ic_favorite_black_24px"></i>2 */}
-            {dummy.like_count}
+            {job.like_count}
           </button>
         </header>
         <div className={cx("body")}>
           <dl>
-            <dt>{dummy.position}</dt>
+            <dt>{job.position}</dt>
             <dd>
-              {dummy.company.name}
+              {job.company.name}
               <br />
-              <span>{dummy.address.location}</span>
+              <span>{job.address.location}</span>
               <span className={cx("addressDot")}>.</span>
-              <span>{dummy.address.country}</span>
+              <span>{job.address.country}</span>
             </dd>
           </dl>
 
           <div className={cx("reward")}>
-            채용보상금 {dummy.reward.formatted_recommendee}
+            채용보상금 {job.reward.formatted_recommendee}
           </div>
         </div>
       </a>
-    </div>
+    </li>
   );
 };
 
