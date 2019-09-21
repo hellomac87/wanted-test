@@ -4,8 +4,9 @@ const initialState = {
   employee_count: [],
   job_sort: [],
   years: [],
-  selected_job_sort: "",
-  selected_countries: ""
+  selected_job_sort: {},
+  selected_countries: {},
+  selected_locations: []
 };
 
 export const LOAD_FILTERS_REQUEST = "LOAD_FILTERS_REQUEST";
@@ -24,18 +25,16 @@ const jobs = (state = initialState, action) =>
       case LOAD_FILTERS_SUCCESS:
         const { countries, employee_count, job_sort, years } = action.data;
         const selected_job_sort = job_sort.find(item => item.selected === true);
-        const selected_job_sort_key = selected_job_sort.key;
         const selected_countries = countries.find(
           item => item.selected === true
         );
-        const selected_countries_key = selected_countries.key;
 
         draft.countries = countries;
         draft.employee_count = employee_count;
         draft.job_sort = job_sort;
         draft.years = years;
-        draft.selected_job_sort = selected_job_sort_key;
-        draft.selected_countries = selected_countries_key;
+        draft.selected_job_sort = selected_job_sort;
+        draft.selected_countries = selected_countries;
         break;
       case LOAD_FILTERS_FAILURE:
         break;
@@ -43,7 +42,10 @@ const jobs = (state = initialState, action) =>
         draft.selected_job_sort = action.selected_job_sort;
         break;
       case CHANGE_COUNTRIES:
-        draft.selected_countries = action.selected_countries;
+        const selected_countries_sort = state.countries.find(
+          item => item.key === action.key
+        );
+        draft.selected_countries = selected_countries_sort;
         break;
     }
   });

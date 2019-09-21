@@ -31,7 +31,7 @@ const FilterModal = () => {
   const onChangeCountries = key => {
     dispatch({
       type: CHANGE_COUNTRIES,
-      selected_countries: key
+      key
     });
   };
   const onChangeYears = value => {};
@@ -95,7 +95,7 @@ const FilterModal = () => {
                     key={item.key}
                     display={item.display}
                     locations={item.locations}
-                    selected={selected_countries === item.key}
+                    selected={selected_countries.key === item.key}
                     onClick={() => onChangeCountries(item.key)}
                   />
                 ))}
@@ -103,23 +103,20 @@ const FilterModal = () => {
             </div>
 
             {/* 지역 */}
-            <div className={cx("wrap", "region")}>
-              <label htmlFor="yearSelector">지역</label>
-              <div className={cx("buttons-wrap")}>
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-                <FilterModalSelectButton title="전국" />
-              </div>
-            </div>
+            {selected_countries.locations &&
+              selected_countries.locations.length > 0 && (
+                <div className={cx("wrap", "region")}>
+                  <label htmlFor="yearSelector">지역</label>
+                  <div className={cx("buttons-wrap")}>
+                    {selected_countries.locations.map(item => (
+                      <FilterModalSelectButton
+                        key={item.key}
+                        display={item.display}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
 
             {/* 경력 */}
             <div className={cx("wrap", "year")}>
