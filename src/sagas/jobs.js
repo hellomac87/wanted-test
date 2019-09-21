@@ -21,7 +21,6 @@ export function* loadJobs(action) {
   try {
     // API 호출
     const result = yield call(loadJobsAPI, action.data);
-    console.log(result);
     yield put({
       type: LOAD_JOBS_SUCCESS,
       data: result.data

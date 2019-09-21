@@ -1,0 +1,16 @@
+.button {
+  margin-right: 9px;
+  margin-bottom: 9px;
+  border: 1px solid #e1e2e3;
+  background: #f8f8fa;
+  padding: 11px 13px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 600;
+  color: #333;
+  &.active {
+    color: #fff;
+    background: #0092fc;
+    border-color: #0092fc;
+  }
+}
