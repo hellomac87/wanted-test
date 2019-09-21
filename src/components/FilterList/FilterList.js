@@ -42,7 +42,7 @@ const FilterList = () => {
         />
       </div>
       <div className={cx("right")}>
-        <Button isDefault={false} title={"필터"} />
+        <Button onClick={openFilterModal} isDefault={false} title={"필터"} />
       </div>
     </div>
   );

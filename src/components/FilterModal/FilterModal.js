@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FILTER_MODAL_CLOSE } from "../../reducers/modal";
-
+import { CHANGE_JOB_SORT, CHANGE_COUNTRIES } from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
 import styles from "./FilterModal.module.scss";
@@ -13,12 +13,39 @@ const FilterModal = () => {
   const dispatch = useDispatch();
 
   const { isOpen } = useSelector(state => state.modal);
+  const {
+    countries,
+    employee_count,
+    job_sort,
+    years,
+    selected_job_sort,
+    selected_countries
+  } = useSelector(state => state.filters);
 
   const closeFilterModal = useCallback(() => {
     dispatch({
       type: FILTER_MODAL_CLOSE
     });
   }, []);
+
+  const onChangeCountries = key => {
+    dispatch({
+      type: CHANGE_COUNTRIES,
+      selected_countries: key
+    });
+  };
+  const onChangeYears = value => {};
+  const onChangeLocations = value => {};
+  const onChangeJobSort = useCallback(e => {
+    dispatch({
+      type: CHANGE_JOB_SORT,
+      selected_job_sort: e.target.value
+    });
+  }, []);
+
+  const selectedJobSort = arr => {
+    return arr.find(item => item.selected);
+  };
 
   return (
     <section className={cx("container", isOpen && "open")}>
@@ -44,10 +71,17 @@ const FilterModal = () => {
             <div className={cx("wrap", "order")}>
               <label htmlFor="orderSelector">정렬</label>
               <div className={cx("selector-wrap")}>
-                <select name="orderSelector" id="orderSelector">
-                  <option value="0">촤신순</option>
-                  <option value="1">보상금순</option>
-                  <option value="2">인기순</option>
+                <select
+                  name="orderSelector"
+                  id="orderSelector"
+                  value={selected_job_sort}
+                  onChange={onChangeJobSort}
+                >
+                  {job_sort.map(item => (
+                    <option value={item.key} key={item.key}>
+                      {item.display}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -56,13 +90,15 @@ const FilterModal = () => {
             <div className={cx("wrap", "country")}>
               <label htmlFor="yearSelector">국가</label>
               <div className={cx("buttons-wrap")}>
-                <FilterModalSelectButton title="전세계" />
-                <FilterModalSelectButton title="대만" />
-                <FilterModalSelectButton title="싱가폴" />
-                <FilterModalSelectButton title="일본" />
-                <FilterModalSelectButton title="한국" />
-                <FilterModalSelectButton title="홍콩" />
-                <FilterModalSelectButton title="기타" />
+                {countries.map(item => (
+                  <FilterModalSelectButton
+                    key={item.key}
+                    display={item.display}
+                    locations={item.locations}
+                    selected={selected_countries === item.key}
+                    onClick={() => onChangeCountries(item.key)}
+                  />
+                ))}
               </div>
             </div>
 
@@ -90,9 +126,11 @@ const FilterModal = () => {
               <label htmlFor="yearSelector">경력</label>
               <div className={cx("selector-wrap")}>
                 <select name="yearSelector" id="yearSelector">
-                  <option value="0">촤신순</option>
-                  <option value="1">보상금순</option>
-                  <option value="2">인기순</option>
+                  {years.map(item => (
+                    <option value={item.key} key={item.key}>
+                      {item.display}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

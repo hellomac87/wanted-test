@@ -6,14 +6,22 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-const FilterModalSelectButton = ({ title }) => {
+const FilterModalSelectButton = ({ display, selected, onClick }) => {
   return (
-    <button className={cx("button", "active")} type="button">
-      {title}
+    <button
+      onClick={onClick}
+      className={cx("button", selected && "selected")}
+      type="button"
+    >
+      {display}
     </button>
   );
 };
 
-FilterModalSelectButton.propTypes = {};
+FilterModalSelectButton.propTypes = {
+  display: PropTypes.string,
+  selected: PropTypes.bool,
+  onClick: PropTypes.func
+};
 
 export default FilterModalSelectButton;
