@@ -15,7 +15,6 @@ const jobs = (state = initialState, action) => {
       };
     }
     case LOAD_JOBS_SUCCESS: {
-      console.log(action.data);
       return {
         ...state,
         jobsList: action.data.data,

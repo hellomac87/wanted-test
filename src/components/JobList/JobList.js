@@ -17,7 +17,6 @@ const JobList = () => {
     });
   }, []);
   const { jobsList } = useSelector(state => state.jobs);
-  console.log(jobsList);
 
   return (
     <ul className={cx("list")}>
