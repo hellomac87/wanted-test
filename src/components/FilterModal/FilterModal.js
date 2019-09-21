@@ -12,7 +12,6 @@ const FilterModal = () => {
   const { isOpen } = useSelector(state => state.modal);
 
   const closeFilterModal = useCallback(() => {
-    console.log("aa");
     dispatch({
       type: FILTER_MODAL_CLOSE
     });

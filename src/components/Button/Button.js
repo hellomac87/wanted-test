@@ -6,13 +6,9 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-const Button = ({ label, title, isDefault }) => {
+const Button = ({ label, title, isDefault, onClick }) => {
   return (
-    <button
-      className={cx("basic")}
-      type={"button"}
-      onClick={() => console.log("click")}
-    >
+    <button className={cx("basic")} type={"button"} onClick={onClick}>
       <span className={cx("label")}>{label && label}</span>
       <span className={cx("title", isDefault && "default")}>{title}</span>
     </button>
@@ -20,8 +16,10 @@ const Button = ({ label, title, isDefault }) => {
 };
 
 Button.propTypes = {
+  onClick: PropTypes.func,
   label: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  isDefault: PropTypes.bool
 };
 
 export default Button;
