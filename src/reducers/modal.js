@@ -1,5 +1,5 @@
 const initialState = {
-  isOpen: true
+  isOpen: false
 };
 
 export const FILTER_MODAL_OPEN = "FILTER_MODAL_OPEN";

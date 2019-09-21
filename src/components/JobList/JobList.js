@@ -1,4 +1,6 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 import { useSelector, useDispatch } from "react-redux";
 import { LOAD_JOBS_REQUEST } from "../../reducers/jobs";
 
@@ -8,12 +10,23 @@ import Card from "../Card/Card";
 
 const cx = classNames.bind(styles);
 
-const JobList = () => {
+const JobList = ({ location }) => {
   const dispatch = useDispatch();
+  const parsed = queryString.parse(location.search);
+  console.log(parsed);
+
+  const params = {
+    tag_type_id: parseInt(parsed.tag_type_id),
+    country: parsed.country || "kr",
+    job_sort: parsed.job_sort || "job.latest_order",
+    years: parseInt(parsed.years) || 0,
+    locations: `List[${parsed.locations}]` || `List[all]`
+  };
 
   useEffect(() => {
     dispatch({
-      type: LOAD_JOBS_REQUEST
+      type: LOAD_JOBS_REQUEST,
+      params
     });
   }, []);
   const { jobsList } = useSelector(state => state.jobs);
@@ -25,4 +38,4 @@ const JobList = () => {
   );
 };
 
-export default JobList;
+export default withRouter(JobList);

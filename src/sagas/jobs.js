@@ -6,21 +6,13 @@ import {
 } from "../reducers/jobs";
 import axios from "axios";
 
-function loadJobsAPI() {
-  const params = {
-    tag_type_id: 669,
-    country: "all",
-    job_sort: "job.latest_order",
-    years: 0,
-    locations: "List[all]"
-  };
+function loadJobsAPI(params) {
   return axios.get("/api/v4/jobs", { params });
 }
-
 export function* loadJobs(action) {
   try {
     // API 호출
-    const result = yield call(loadJobsAPI, action.data);
+    const result = yield call(loadJobsAPI, action.params);
     yield put({
       type: LOAD_JOBS_SUCCESS,
       data: result.data
