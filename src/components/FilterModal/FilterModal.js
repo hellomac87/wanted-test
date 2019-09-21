@@ -1,13 +1,25 @@
-import React from "react";
-
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FILTER_MODAL_CLOSE } from "../../reducers/modal";
 import styles from "./FilterModal.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
 const FilterModal = () => {
+  const dispatch = useDispatch();
+
+  const { isOpen } = useSelector(state => state.modal);
+
+  const closeFilterModal = useCallback(() => {
+    console.log("aa");
+    dispatch({
+      type: FILTER_MODAL_CLOSE
+    });
+  }, []);
+
   return (
-    <section className={cx("container")}>
+    <section className={cx("container", isOpen && "open")}>
       <div className={cx("mask")} />
       <article className={cx("content")}>
         <header className={cx("header")}>
@@ -15,7 +27,11 @@ const FilterModal = () => {
             초기화
           </button>
           <h1 className={cx("title")}>필터</h1>
-          <button type={"button"} className={cx("close-btn")}>
+          <button
+            onClick={closeFilterModal}
+            type={"button"}
+            className={cx("close-btn")}
+          >
             X
           </button>
         </header>

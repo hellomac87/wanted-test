@@ -1,5 +1,9 @@
 .container {
   position: relative;
+  visibility: hidden;
+  &.open {
+    visibility: visible;
+  }
 }
 
 .mask {
