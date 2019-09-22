@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import styles from "./Card.module.scss";
 import classNames from "classnames/bind";
@@ -45,7 +44,5 @@ const Card = ({ job }) => {
     </li>
   );
 };
-
-Card.propTypes = {};
 
 export default Card;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import JobList from "../components/JobList";
 import FilterList from "../components/FilterList/FilterList";

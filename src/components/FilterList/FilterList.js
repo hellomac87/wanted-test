@@ -38,7 +38,7 @@ const FilterList = () => {
           onClick={openFilterModal}
           isDefault={true}
           label={"지역"}
-          title={selected_locations[0]}
+          title={selected_locations.display}
         />
         <Button
           onClick={openFilterModal}

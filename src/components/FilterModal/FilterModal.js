@@ -7,8 +7,7 @@ import {
   CHANGE_YEARS,
   ADD_LOCATIONS,
   DELETE_LOCATIONS,
-  ALL_LOCATIONS,
-  DELETE_ALL_LOCATIONS_KEY
+  ALL_LOCATIONS
 } from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
@@ -23,7 +22,6 @@ const FilterModal = () => {
   const { isOpen } = useSelector(state => state.modal);
   const {
     countries,
-    employee_count,
     job_sort,
     years,
     selected_job_sort,
@@ -78,10 +76,6 @@ const FilterModal = () => {
       selected_job_sort: e.target.value
     });
   }, []);
-
-  const selectedJobSort = arr => {
-    return arr.find(item => item.selected);
-  };
 
   const isSelectedLocation = key => {
     return selected_locations.includes(key);
