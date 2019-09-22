@@ -11,6 +11,12 @@ const cx = classNames.bind(styles);
 
 const FilterList = () => {
   const dispatch = useDispatch();
+  const {
+    selected_job_sort,
+    selected_countries,
+    selected_year,
+    selected_locations
+  } = useSelector(state => state.filters);
 
   const openFilterModal = useCallback(() => {
     dispatch({
@@ -21,24 +27,24 @@ const FilterList = () => {
   return (
     <div className={cx("container")}>
       <div className={cx("left")}>
-        <Button onClick={openFilterModal} title={"최신순"} />
+        <Button onClick={openFilterModal} title={selected_job_sort.display} />
         <Button
           onClick={openFilterModal}
           isDefault={false}
           label={"국가"}
-          title={"한국"}
+          title={selected_countries.display}
         />
         <Button
           onClick={openFilterModal}
           isDefault={true}
           label={"지역"}
-          title={"전국"}
+          title={selected_locations[0]}
         />
         <Button
           onClick={openFilterModal}
           isDefault={false}
           label={"경력"}
-          title={"신입"}
+          title={selected_year.display}
         />
       </div>
       <div className={cx("right")}>

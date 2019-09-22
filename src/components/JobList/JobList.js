@@ -16,10 +16,10 @@ const JobList = ({ location }) => {
 
   const params = {
     tag_type_id: parseInt(parsed.tag_type_id),
-    country: parsed.country || "kr",
-    job_sort: parsed.job_sort || "job.latest_order",
-    years: parseInt(parsed.years) || 0,
-    locations: `List[${parsed.locations}]` || `List[all]`
+    country: parsed.country,
+    job_sort: parsed.job_sort,
+    years: parseInt(parsed.years),
+    locations: `List[${parsed.locations}]`
   };
 
   useEffect(() => {

@@ -13,3 +13,8 @@
 - Proxy : react-router-dom 사용하여 url의 query-string 을 파싱하여 api 호출의 params로 사용할시 api 호출시 proxy 설정이 작동하지 않음
 
 해결: react-router-dom 사용하여 url의 query-string 이 문제의 원인이 아니라 파라미터로 넘겨야 할 값을 잘못 설정한 탓 ㅜㅜ
+
+### 문제 3
+
+- 차분히 설계하고 만들다보니 많은 시행착오가 생겼음, 현재 filter와 job api를 동시에 호출하는데서 뷰를 보여주는데 문제가 있음
+  먼저 filter API 를 호출하여 상태를 세팅한 후에 filter 에 따라 job api 를 호출하는 쪽으로 가닥을 잡아보려 함.

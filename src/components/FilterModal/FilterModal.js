@@ -7,7 +7,8 @@ import {
   CHANGE_YEARS,
   ADD_LOCATIONS,
   DELETE_LOCATIONS,
-  ALL_LOCATIONS
+  ALL_LOCATIONS,
+  DELETE_ALL_LOCATIONS_KEY
 } from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
@@ -42,6 +43,9 @@ const FilterModal = () => {
       type: CHANGE_COUNTRIES,
       key
     });
+    dispatch({
+      type: ALL_LOCATIONS
+    });
   };
   const onChangeYears = useCallback(e => {
     dispatch({
@@ -55,7 +59,6 @@ const FilterModal = () => {
       dispatch({
         type: ALL_LOCATIONS
       });
-      return;
     }
     if (isIncludeKey) {
       dispatch({
@@ -78,6 +81,10 @@ const FilterModal = () => {
 
   const selectedJobSort = arr => {
     return arr.find(item => item.selected);
+  };
+
+  const isSelectedLocation = key => {
+    return selected_locations.includes(key);
   };
 
   return (
@@ -146,6 +153,7 @@ const FilterModal = () => {
                         key={item.key}
                         display={item.display}
                         onClick={() => onClickLocationsButton(item.key)}
+                        selected={isSelectedLocation(item.key)}
                       />
                     ))}
                   </div>

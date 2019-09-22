@@ -22,6 +22,7 @@ export const CHANGE_YEARS = "CHANGE_YEARS";
 export const ADD_LOCATIONS = "ADD_LOCATIONS";
 export const DELETE_LOCATIONS = "DELETE_LOCATIONS";
 export const ALL_LOCATIONS = "ALL_LOCATIONS";
+export const DELETE_ALL_LOCATIONS_KEY = "DELETE_ALL_LOCATIONS_KEY";
 
 const jobs = (state = initialState, action) =>
   produce(state, draft => {
@@ -44,6 +45,7 @@ const jobs = (state = initialState, action) =>
         draft.selected_job_sort = selected_job_sort;
         draft.selected_countries = selected_countries;
         draft.selected_year = selected_year;
+
         break;
       case LOAD_FILTERS_FAILURE:
         break;
@@ -71,6 +73,7 @@ const jobs = (state = initialState, action) =>
         break;
       case ALL_LOCATIONS:
         draft.selected_locations = ["all"];
+        break;
     }
   });
 
