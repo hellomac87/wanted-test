@@ -1,7 +1,11 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FILTER_MODAL_CLOSE } from "../../reducers/modal";
-import { CHANGE_JOB_SORT, CHANGE_COUNTRIES } from "../../reducers/filters";
+import {
+  CHANGE_JOB_SORT,
+  CHANGE_COUNTRIES,
+  CHANGE_YEARS
+} from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
 import styles from "./FilterModal.module.scss";
@@ -19,7 +23,8 @@ const FilterModal = () => {
     job_sort,
     years,
     selected_job_sort,
-    selected_countries
+    selected_countries,
+    selected_year
   } = useSelector(state => state.filters);
 
   const closeFilterModal = useCallback(() => {
@@ -34,7 +39,12 @@ const FilterModal = () => {
       key
     });
   };
-  const onChangeYears = value => {};
+  const onChangeYears = useCallback(e => {
+    dispatch({
+      type: CHANGE_YEARS,
+      selected_year: e.target.value
+    });
+  }, []);
   const onChangeLocations = value => {};
   const onChangeJobSort = useCallback(e => {
     dispatch({
@@ -122,7 +132,12 @@ const FilterModal = () => {
             <div className={cx("wrap", "year")}>
               <label htmlFor="yearSelector">경력</label>
               <div className={cx("selector-wrap")}>
-                <select name="yearSelector" id="yearSelector">
+                <select
+                  name="yearSelector"
+                  id="yearSelector"
+                  value={selected_year}
+                  onChange={onChangeYears}
+                >
                   {years.map(item => (
                     <option value={item.key} key={item.key}>
                       {item.display}

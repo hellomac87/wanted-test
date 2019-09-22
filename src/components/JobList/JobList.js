@@ -13,7 +13,6 @@ const cx = classNames.bind(styles);
 const JobList = ({ location }) => {
   const dispatch = useDispatch();
   const parsed = queryString.parse(location.search);
-  console.log(parsed);
 
   const params = {
     tag_type_id: parseInt(parsed.tag_type_id),

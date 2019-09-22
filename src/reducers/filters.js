@@ -4,8 +4,10 @@ const initialState = {
   employee_count: [],
   job_sort: [],
   years: [],
+
   selected_job_sort: {},
   selected_countries: {},
+  selected_year: {},
   selected_locations: []
 };
 
@@ -28,13 +30,16 @@ const jobs = (state = initialState, action) =>
         const selected_countries = countries.find(
           item => item.selected === true
         );
+        const selected_year = years.find(item => item.selected === true);
 
         draft.countries = countries;
         draft.employee_count = employee_count;
         draft.job_sort = job_sort;
         draft.years = years;
+
         draft.selected_job_sort = selected_job_sort;
         draft.selected_countries = selected_countries;
+        draft.selected_year = selected_year;
         break;
       case LOAD_FILTERS_FAILURE:
         break;
@@ -46,6 +51,9 @@ const jobs = (state = initialState, action) =>
           item => item.key === action.key
         );
         draft.selected_countries = selected_countries_sort;
+        break;
+      case CHANGE_YEARS:
+        draft.selected_year = action.selected_year;
         break;
     }
   });
