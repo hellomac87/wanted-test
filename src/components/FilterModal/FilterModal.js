@@ -4,7 +4,9 @@ import { FILTER_MODAL_CLOSE } from "../../reducers/modal";
 import {
   CHANGE_JOB_SORT,
   CHANGE_COUNTRIES,
-  CHANGE_YEARS
+  CHANGE_YEARS,
+  ADD_LOCATIONS,
+  DELETE_LOCATIONS
 } from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
@@ -24,7 +26,8 @@ const FilterModal = () => {
     years,
     selected_job_sort,
     selected_countries,
-    selected_year
+    selected_year,
+    selected_locations
   } = useSelector(state => state.filters);
 
   const closeFilterModal = useCallback(() => {
@@ -45,7 +48,20 @@ const FilterModal = () => {
       selected_year: e.target.value
     });
   }, []);
-  const onChangeLocations = value => {};
+  const onClickLocationsButton = key => {
+    const isIncludeKey = selected_locations.includes(key);
+    if (isIncludeKey) {
+      dispatch({
+        type: DELETE_LOCATIONS,
+        key
+      });
+    } else {
+      dispatch({
+        type: ADD_LOCATIONS,
+        key
+      });
+    }
+  };
   const onChangeJobSort = useCallback(e => {
     dispatch({
       type: CHANGE_JOB_SORT,
@@ -122,6 +138,7 @@ const FilterModal = () => {
                       <FilterModalSelectButton
                         key={item.key}
                         display={item.display}
+                        onClick={() => onClickLocationsButton(item.key)}
                       />
                     ))}
                   </div>

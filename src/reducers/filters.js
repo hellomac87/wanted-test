@@ -19,6 +19,9 @@ export const CHANGE_JOB_SORT = "CHANGE_JOB_SORT";
 export const CHANGE_COUNTRIES = "CHANGE_COUNTRIES";
 export const CHANGE_YEARS = "CHANGE_YEARS";
 
+export const ADD_LOCATIONS = "ADD_LOCATIONS";
+export const DELETE_LOCATIONS = "DELETE_LOCATIONS";
+
 const jobs = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
@@ -54,6 +57,16 @@ const jobs = (state = initialState, action) =>
         break;
       case CHANGE_YEARS:
         draft.selected_year = action.selected_year;
+        break;
+      case ADD_LOCATIONS:
+        draft.selected_locations.push(action.key);
+        break;
+      case DELETE_LOCATIONS:
+        console.log(action.key);
+        const deleteIndex = state.selected_locations.findIndex(
+          item => item === action.key
+        );
+        draft.selected_locations.splice(deleteIndex, 1);
         break;
     }
   });
