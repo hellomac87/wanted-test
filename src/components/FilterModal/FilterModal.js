@@ -6,7 +6,8 @@ import {
   CHANGE_COUNTRIES,
   CHANGE_YEARS,
   ADD_LOCATIONS,
-  DELETE_LOCATIONS
+  DELETE_LOCATIONS,
+  ALL_LOCATIONS
 } from "../../reducers/filters";
 import FilterModalSelectButton from "../FilterModalSelectButton";
 
@@ -50,6 +51,12 @@ const FilterModal = () => {
   }, []);
   const onClickLocationsButton = key => {
     const isIncludeKey = selected_locations.includes(key);
+    if (key === "all") {
+      dispatch({
+        type: ALL_LOCATIONS
+      });
+      return;
+    }
     if (isIncludeKey) {
       dispatch({
         type: DELETE_LOCATIONS,

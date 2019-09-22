@@ -21,6 +21,7 @@ export const CHANGE_YEARS = "CHANGE_YEARS";
 
 export const ADD_LOCATIONS = "ADD_LOCATIONS";
 export const DELETE_LOCATIONS = "DELETE_LOCATIONS";
+export const ALL_LOCATIONS = "ALL_LOCATIONS";
 
 const jobs = (state = initialState, action) =>
   produce(state, draft => {
@@ -68,6 +69,8 @@ const jobs = (state = initialState, action) =>
         );
         draft.selected_locations.splice(deleteIndex, 1);
         break;
+      case ALL_LOCATIONS:
+        draft.selected_locations = ["all"];
     }
   });
 
