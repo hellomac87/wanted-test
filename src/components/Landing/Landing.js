@@ -1,14 +1,24 @@
 import React, { useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LOAD_FILTERS_REQUEST } from "../../reducers/filters";
 import { withRouter } from "react-router";
 
 const Landing = ({ history }) => {
+  const dispatch = useDispatch();
+  const { push } = history;
+  const { onJobListReady } = useSelector(state => state.jobs);
   useEffect(() => {
-    const { push } = history;
-    push(
-      `/jobs?tag_type_id=669&country=all&job_sort=job.compensation_order&years=0&locations=seoul`
-    );
+    dispatch({
+      type: LOAD_FILTERS_REQUEST
+    });
   }, []);
-  return <div />;
+
+  if (!onJobListReady) {
+    return <div />;
+  } else {
+    return <Redirect to={"/jobs"} />;
+  }
 };
 
 export default withRouter(Landing);

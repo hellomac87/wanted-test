@@ -4,6 +4,7 @@ import {
   LOAD_FILTERS_SUCCESS,
   LOAD_FILTERS_FAILURE
 } from "../reducers/filters";
+import { LOAD_JOBS_REQUEST } from "../reducers/jobs";
 import axios from "axios";
 
 function loadFiltersAPI() {
@@ -16,6 +17,10 @@ export function* loadFilters(action) {
 
     yield put({
       type: LOAD_FILTERS_SUCCESS,
+      data
+    });
+    yield put({
+      type: LOAD_JOBS_REQUEST,
       data
     });
   } catch (e) {

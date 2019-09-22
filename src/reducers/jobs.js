@@ -1,6 +1,7 @@
 const initialState = {
-  jobsList: [],
-  jobsLinks: null
+  jobsList: null,
+  jobsLinks: null,
+  onJobListReady: false
 };
 
 export const LOAD_JOBS_REQUEST = "LOAD_JOBS_REQUEST";
@@ -18,7 +19,8 @@ const jobs = (state = initialState, action) => {
       return {
         ...state,
         jobsList: action.data.data,
-        jobsLinks: action.data.links
+        jobsLinks: action.data.links,
+        onJobListReady: true
       };
     }
     case LOAD_JOBS_FAILURE: {

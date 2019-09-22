@@ -45,7 +45,7 @@ const jobs = (state = initialState, action) =>
         draft.selected_job_sort = selected_job_sort;
         draft.selected_countries = selected_countries;
         draft.selected_year = selected_year;
-
+        draft.selected_locations = [];
         break;
       case LOAD_FILTERS_FAILURE:
         break;

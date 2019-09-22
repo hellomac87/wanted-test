@@ -16,7 +16,9 @@ const Card = ({ job }) => {
       >
         <header
           className={cx("header")}
-          style={{ backgroundImage: `url(${job.title_img.thumb})` }}
+          style={{
+            background: `url(${job.title_img && job.title_img.thumb}) `
+          }}
         >
           <button type="button" className={cx("likeButton")}>
             {/* <i class="icon-ic_favorite_black_24px"></i>2 */}
