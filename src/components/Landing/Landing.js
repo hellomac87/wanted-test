@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_FILTERS_REQUEST } from "../../reducers/filters";
 import { withRouter } from "react-router";
 
-const Landing = ({ history }) => {
+const Landing = () => {
   const dispatch = useDispatch();
-  const { push } = history;
   const { onJobListReady } = useSelector(state => state.jobs);
   useEffect(() => {
     dispatch({
@@ -17,7 +16,13 @@ const Landing = ({ history }) => {
   if (!onJobListReady) {
     return <div />;
   } else {
-    return <Redirect to={"/jobs"} />;
+    return (
+      <Redirect
+        to={
+          "/jobs?tag_type_id=669&job_sort=job.latest_order&country=all&years=-1"
+        }
+      />
+    );
   }
 };
 
